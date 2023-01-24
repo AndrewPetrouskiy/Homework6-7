@@ -35,7 +35,7 @@ public class RepositoryFile implements Repository {
         String id = String.format("%d", newId);
         note.setId(id);
         notes.add(note);
-        saveUsers(notes);
+        saveNotes(notes);
         return id;
     }
 
@@ -47,7 +47,7 @@ public class RepositoryFile implements Repository {
         toIdheaders.setContent(note.getContent());
         toIdheaders.setAdditional(note.getAdditional());
         toIdheaders.setTime(note.getDateTime());
-        saveUsers(notes);
+        saveNotes(notes);
     }
 
     @Override
@@ -58,10 +58,10 @@ public class RepositoryFile implements Repository {
                 notes.remove(dn);
             }
         }
-        saveUsers(notes);
+        saveNotes(notes);
     }
 
-    private void saveUsers (List<Note> notes){
+    private void saveNotes (List<Note> notes){
         List<String> lines = new ArrayList<>();
         for (Note item: notes) {
             lines.add(mapper.map(item));
